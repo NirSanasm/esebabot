@@ -871,6 +871,446 @@ KNOWLEDGE_BASE =[
       "latest actions"
     ]
   }
+  ,
+  ### newly added about revenue department
+  {
+  "id": "revenue_overview_000",
+  "service": "Revenue Department",
+  "category": "Overview",
+  "question": "What services are available under the Revenue Department on e-Seba Manipur?",
+  "answer": "The Revenue Department on e-Seba Manipur provides online services for applying for various certificates. These include OBC Certificate, Permanent Resident Certificate (PRC), Income Certificate, Domicile Certificate, ST Certificate, and SC Certificate. Citizens can apply online, upload required documents, track application status, and download certificates once approved.",
+  "keywords": [
+    "revenue department",
+    "e-seba",
+    "certificates",
+    "manipur",
+    "online services"
+  ]
+},
+{
+  "id": "income_001",
+  "service": "Revenue Department",
+  "category": "Income certificate",
+  "question": "What is the Income Certificate service on e-Seba Manipur?",
+  "answer": "The Income Certificate service on e-Seba Manipur allows citizens to apply online for an official certificate that proves their annual income. This certificate is commonly required for scholarships, government schemes, fee concessions, and other official purposes. Applicants can submit the form online, upload documents, track status, and download the certificate after approval.",
+  "keywords": [
+    "income certificate",
+    "revenue department",
+    "e-seba",
+    "income proof",
+    "manipur"
+  ]
+},
+
+{
+  "id": "prc_001",
+  "service": "Revenue Department",
+  "category": "Permanent Resident Certificate",
+  "question": "What is the Permanent Resident Certificate (PRC) service?",
+  "answer": "The Permanent Resident Certificate (PRC) service allows citizens to apply online for a certificate that proves they are a permanent resident of Manipur. This certificate is often required for education, government jobs, and other official purposes. Users can apply online, upload documents, and track their application status on e-Seba Manipur.",
+  "keywords": [
+    "prc",
+    "permanent resident certificate",
+    "manipur",
+    "residency proof",
+    "e-seba"
+  ]
+},
+{
+  "id": "domicile_001",
+  "service": "Revenue Department",
+  "category": "Domicile certificate",
+  "question": "What is the Domicile Certificate service on e-Seba Manipur?",
+  "answer": "The Domicile Certificate service allows citizens to apply for an official document that certifies their domicile status in Manipur. This certificate is used for admissions, government jobs, and various government schemes. The application can be submitted online through e-Seba Manipur.",
+  "keywords": [
+    "domicile certificate",
+    "manipur",
+    "residence proof",
+    "government service",
+    "e-seba"
+  ]
+},
+{
+  "id": "obc_001",
+  "service": "Revenue Department",
+  "category": "OBC Certificate",
+  "question": "What is the OBC Certificate service?",
+  "answer": "The OBC Certificate service allows eligible citizens to apply online for an Other Backward Class (OBC) certificate. This certificate is used to claim reservation benefits in education, jobs, and government schemes. Applicants can apply, upload documents, and track their application on e-Seba Manipur.",
+  "keywords": [
+    "obc certificate",
+    "backward class",
+    "reservation",
+    "e-seba",
+    "manipur"
+  ]
+},
+{
+  "id": "sc_001",
+  "service": "Revenue Department",
+  "category": "SC Certificate",
+  "question": "What is the SC Certificate service?",
+  "answer": "The SC Certificate service allows eligible citizens to apply online for a Scheduled Caste (SC) certificate. This certificate is required to avail reservation benefits in education, employment, and government schemes. The entire application process can be completed through e-Seba Manipur.",
+  "keywords": [
+    "sc certificate",
+    "scheduled caste",
+    "reservation",
+    "e-seba",
+    "manipur"
+  ]
+},
+{
+  "id": "st_001",
+  "service": "Revenue Department",
+  "category": "ST Certificate",
+  "question": "What is the ST Certificate service?",
+  "answer": "The ST Certificate service allows eligible citizens to apply online for a Scheduled Tribe (ST) certificate. This certificate is used for claiming reservation benefits in education, jobs, and government welfare schemes. Users can apply and track their application through e-Seba Manipur.",
+  "keywords": [
+    "st certificate",
+    "scheduled tribe",
+    "reservation",
+    "e-seba",
+    "manipur"
+  ]
+},
+{
+  "id": "common_001",
+  "service": "Revenue Department",
+  "category": "Application Process",
+  "question": "How can I apply for any certificate under the Revenue Department on e-Seba Manipur?",
+  "answer": "To apply for any certificate, select the required service such as Income Certificate, PRC, OBC, SC, ST, or Domicile Certificate, click on 'Apply Now', fill in the application form, upload the required documents, and submit the application. You can then track the status of your application online.",
+  "keywords": [
+    "apply online",
+    "revenue department",
+    "e-seba",
+    "certificate application",
+    "manipur"
+  ]
+},
+{
+  "id": "common_002",
+  "service": "Revenue Department",
+  "category": "Tracking",
+  "question": "How can I check the status of my certificate application?",
+  "answer": "After submitting your application on e-Seba Manipur, you can check the status by using the application status or tracking option available on the portal. You will be able to see whether your application is under process, approved, or rejected.",
+  "keywords": [
+    "track application",
+    "status check",
+    "e-seba",
+    "revenue department",
+    "certificate"
+  ]
+},
+
+## newly added profile FAQ
+
+{
+  "id": "profile_001",
+  "service": "General",
+  "category": "Citizen Profile",
+  "question": "What is the Citizen Profile on e-Seba Manipur?",
+  "answer": "The Citizen Profile on e-Seba Manipur stores your personal details such as name, photo, and other basic information. This profile information is automatically used to fill in your details in all service application forms, saving time and reducing errors.",
+  "keywords": [
+    "citizen profile",
+    "e-seba",
+    "profile",
+    "personal details",
+    "manipur"
+  ]
+},
+{
+  "id": "profile_002",
+  "service": "General",
+  "category": "Citizen Profile",
+  "question": "Why is my Citizen Profile information used in service application forms?",
+  "answer": "Your Citizen Profile information is automatically populated in all service application forms to make the application process faster and easier. This helps avoid repeated data entry and reduces the chance of mistakes while filling forms.",
+  "keywords": [
+    "auto fill",
+    "application form",
+    "citizen profile",
+    "e-seba",
+    "profile usage"
+  ]
+},
+{
+  "id": "profile_003",
+  "service": "General",
+  "category": "Citizen Profile",
+  "question": "Why should I keep my Citizen Profile details updated?",
+  "answer": "You should keep your Citizen Profile details updated because the same information is used in all service applications. If your profile contains incorrect or outdated information, it may cause problems or delays in processing your applications.",
+  "keywords": [
+    "update profile",
+    "correct information",
+    "citizen profile",
+    "e-seba",
+    "application issues"
+  ]
+},
+{
+  "id": "profile_004",
+  "service": "General",
+  "category": "Citizen Profile",
+  "question": "How can I edit my Citizen Profile on e-Seba Manipur?",
+  "answer": "To edit your Citizen Profile, go to the Edit Profile section, update the required details, and save the changes. The updated information will be used automatically in future service application forms.",
+  "keywords": [
+    "edit profile",
+    "update details",
+    "citizen profile",
+    "e-seba",
+    "manipur"
+  ]
+},
+{
+  "id": "profile_005",
+  "service": "General",
+  "category": "Citizen Profile",
+  "question": "How can I upload or change my profile photo?",
+  "answer": "You can upload or change your profile photo by clicking on the Upload button in the Edit Profile section and selecting a suitable image from your device. After uploading, save the changes to update your profile photo.",
+  "keywords": [
+    "upload photo",
+    "profile picture",
+    "edit profile",
+    "e-seba",
+    "citizen profile"
+  ]
+},
+{
+  "id": "profile_005",
+  "service": "General",
+  "category": "Data Accuracy",
+  "question": "What happens if my Citizen Profile information is incorrect?",
+  "answer": "If your Citizen Profile information is incorrect, the same incorrect details may appear in your service application forms. This can lead to rejection or delay in processing your application, so it is important to keep your profile information accurate and up to date.",
+  "keywords": [
+    "wrong information",
+    "profile error",
+    "application rejection",
+    "e-seba",
+    "citizen profile"
+  ]
+},
+{
+  "id": "profile_006",
+  "service": "General",
+  "category": "Citizen Profile",
+  "question": "Do I need to fill my details again for every service application?",
+  "answer": "No, you do not need to fill your basic details again for every service application. Your Citizen Profile information is automatically populated in all service application forms.",
+  "keywords": [
+    "auto populate",
+    "application form",
+    "citizen profile",
+    "e-seba",
+    "time saving"
+  ]
+},
+
+## oken documents:
+
+
+  {
+        "id": "updating_qua_exp_001",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "How do I start the process of updating my Qualification and Experience in the Employment Exchange?",
+        "answer": "From the 'Apply New Services' page, locate the 'Updating Qualification, Experience' service card under the Employment Exchange Department and click 'Continue'. A verification dialog will appear prompting you to enter your Registration Number and Date of Birth to confirm your identity before proceeding.",
+        "keywords": [
+            "update qualification",
+            "update experience",
+            "employment exchange",
+            "apply new services"
+        ]
+    },
+    {
+        "id": "update_step1_001",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What personal information is required in Step 1 of the Update Qualification and Experience form?",
+        "answer": "Step 1 (Personal) requires you to fill in your Name as per Aadhaar, First Name, Middle Name, Last Name, Email ID, Gender, Date of Birth, Marital Status, Spouse Name (if applicable), and Mobile Number. Fields marked with an asterisk (*) are mandatory. Once completed, click 'Next' to proceed to Step 2.",
+        "keywords": [
+            "personal details"
+        ]
+    },
+    {
+        "id": "update_step1_002",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What additional personal fields are present at the bottom of Step 1?",
+        "answer": "The lower portion of Step 1 includes fields for Spouse Name, Father Name, Mother Name, Aadhaar Number, Religion, Other Religion, and Area (e.g., Urban or Rural). After filling all required fields, click the 'Next' button to advance to the Address step.",
+        "keywords": [
+            "spouse name",
+            "father name",
+            "mother name",
+            "aadhaar number",
+            "religion",
+            "area",
+            "urban",
+            "rural",
+            "next button",
+            "step 1"
+        ]
+    },
+    {
+        "id": "update_step2_001",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What information is needed in Step 2 (Address) of the update form?",
+        "answer": "Step 2 requires you to provide your Permanent Address details including Address, Locality, District, Pin Code, Post Office, and Police Station. For the Present Address section, you can check the box 'Is Present Address same as Permanent Address?' to auto-fill it. Click 'Next' to proceed or 'Back' to return to Step 1.",
+        "keywords": [
+            "permanent address",
+            "present address"
+        ]
+    },
+    {
+        "id": "update_step3_001",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What does Step 3 (Qualification) look like when no records have been added yet?",
+        "answer": "In Step 3, if no records exist, the page displays 'No Education Records – Click Add to add Education' and 'No Experience Records – Click Add to add Experience'. You must use the 'Add Education' and 'Add Experience' buttons to enter your qualification and work experience details before proceeding.",
+        "keywords": [
+            "no education records",
+            "no experience records"
+        ]
+    },
+    {
+        "id": "update_step3_addQua_001",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What details are required when adding a qualification in Step 3?",
+        "answer": "When you click 'Add Education', a dialog titled 'Add Qualification' appears. You need to fill in: Exam Passed, Board/University, Subjects (add using the '+' button), Division/Grade, Year of Passing (digits only), Course Duration (digits only), School/Institute Name, Medium of instruction (e.g., English, Manipuri, Hindi), and Percentage/CGPA (digits only).",
+        "keywords": [
+            "add qualification"
+        ]
+    },
+    {
+        "id": "update_step3_addExp_001",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What fields are available in the Add Experience dialog?",
+        "answer": "The 'Add Experience' dialog contains fields for: Name of Employer/Company/Organization, Pay on Leaving (per Month), From Date, To Date, Nature of Work, Experience Type, Type of Job, Post Held, and Reason for Leaving. A guide panel on the right provides instructions and an example to help you fill in the form correctly.",
+        "keywords": [
+            "add experience",
+            "employer"
+        ]
+    },
+    {
+        "id": "update_step3_addExp_002",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What are the accepted values for Experience Type and Type of Job when adding experience?",
+        "answer": "For Experience Type, the accepted options are: Full-Time Employment, Part-Time, Contract, and Internship. For Type of Job, the accepted options are: Administration, Technical, Skilled, Unskilled, and Office Assistance. The guide panel also notes that Nature of Work should describe your responsibilities, and you should provide a brief reason for leaving.",
+        "keywords": [
+            "experience type",
+            "reason for leaving"
+        ]
+    },
+    {
+        "id": "update_step4_001",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "How do I add a language in Step 4 of the update form?",
+        "answer": "In Step 4 (Language), click 'Add Language' to open the Add Language dialog. Select the language from the 'Language Known' dropdown (e.g., English), then indicate your proficiency by selecting Yes or No for Read, Speak, and Write. Click 'Add' to save the language entry or 'Cancel' to dismiss the dialog.",
+        "keywords": [
+            "add language",
+            "language known"
+        ]
+    },
+    {
+        "id": "update_step5_001",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What fields are in the top section of Step 5 (Other Details)?",
+        "answer": "Step 5 (Other) contains fields for: Place Where Willing to Work, Are You Employed?, Proof of Resident, Resident Proof No, Expected Minimum Salary for Outside Job (Rs. PM), Expected Minimum Salary for Local Job (Rs. PM), Priority for Central, Priority for Central Priority, Certificate Number (Central), Certifying Authority (Central), Period of Work(s) (Central), Certificate Date (Central), State Priority, and Certificate Number (State).",
+        "keywords": [
+            "other details",
+            "willing to work"
+        ]
+    },
+    {
+        "id": "update_step5_002",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What physical details are required in Step 5 of the update form?",
+        "answer": "The Physical Details section in Step 5 requires: Do Wear Glass (Yes/No), Height (in cm), Weight (in kg), Chest Normal (in cm), Chest Expanded (in cm), Disability (more than 40%), Disability Type, Main Sport, and Sport Level (e.g., International Level). All fields marked with an asterisk (*) are mandatory.",
+        "keywords": [
+            "physical details",
+            "international level"
+        ]
+    },
+    {
+        "id": "update_step5_003",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What caste and willingness information is required in Step 5?",
+        "answer": "The Caste Details section requires: Category (e.g., OBC), Caste, Sub Caste, OBC at Central List, Certificate Number, Issue Date, Issued By, and Remarks. The Willingness Details section requires: Sector Willingness (e.g., Government), Vacancy Willingness, Trade Willingness, Training Willingness, Other Willingness, Non Availability From, and Non Availability To dates.",
+        "keywords": [
+            "caste details",
+            "category",
+            "caste"
+        ]
+    },
+    {
+        "id": "update_step6_001",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What documents need to be uploaded in Step 6 (Uploads) under Identification Proof and Proof of Residence?",
+        "answer": "Step 6 (Uploads) requires you to upload the following under Identification Proof: Aadhaar Front Side, Aadhaar Back Side, and Passport Size Photograph. Under Proof of Residence, you must upload a Domicile Certificate. Successfully uploaded documents are indicated by a green checkmark icon. You can preview uploaded files using the eye icon.",
+        "keywords": [
+            "upload documents",
+            "identification proof"
+        ]
+    },
+    {
+        "id": "update_step6_002",
+        "service": "Employment Exchange",
+        "category": "Update Qualification and Experience",
+        "question": "What is required in the Declaration section before submitting the update form?",
+        "answer": "Before submitting, you must upload the remaining documents under 'Other': Caste Certificate and Date of Birth Certificate. In the Declaration section, select the 'Office in which Application needs to be processed' from the dropdown (e.g., District Employment Exchange, Imphal East), then check the declaration checkbox confirming that all information provided is true. Finally, click 'Submit' to complete the update process or 'Back' to make changes.",
+        "keywords": [
+            "declaration",
+            "caste certificate"
+        ]
+    },
+    {
+        "id": "apply_services_001",
+        "service": "General",
+        "category": "Apply New Services",
+        "question": "What services are available under the Employment Exchange Department and Revenue Department on the Apply New Services page?",
+        "answer": "The 'Apply New Services' page lists all available government services grouped by department. Under the Employment Exchange Department, the available services are: Updating Qualification & Experience, Transfer of Registration to Employment Exchange, Renewal of Registration, Application against Vacancy, and Registration in Employment Exchange. Under the Revenue Department, the available services are: OBC Certificate, Permanent Resident Certificate, Income Certificate, Domicile Certificate, ST Certificate, and SC Certificate. Services that have already been submitted show a 'Submitted' status instead of an 'Apply Now' button.",
+        "keywords": [
+            "apply new services",
+            "employment exchange department",
+            "revenue department",
+            "updating qualification",
+            "transfer of registration",
+            "renewal of registration"
+        ]
+    },
+    {
+        "id": "application_against_vacancy_001",
+        "service": "Employment Exchange",
+        "category": "Application against Vacancy",
+        "question": "How do I apply for a job vacancy through the Application against Vacancy service?",
+        "answer": "Navigate to 'Application against Vacancy' from the Apply New Services page to reach the 'Available Jobs' screen. This page displays summary cards showing your Exchange Card status, the number of Available Jobs, Applied Jobs, and Total Sponsored positions. The job listing table shows each vacancy's Job Code, Sponsor Number, Job Title, Employer, and required Qualification. Click 'Apply' to apply for a specific vacancy or 'Details' to view more information about it. You can also search for jobs by Title or Code using the search bar.",
+        "keywords": [
+            "application against vacancy",
+            "available jobs"
+        ]
+    },
+    {
+        "id": "transfer_emp_001",
+        "service": "Employment Exchange",
+        "category": "Transfer of Registration to Employment Exchange",
+        "question": "What is required in the Transfer of Employment Exchange form and how does it differ from other update forms?",
+        "answer": "The 'Transfer of Employment Exchange' form begins with a Personal section that collects the same personal details as other Employment Exchange forms: Name as per Aadhaar, First Name, Middle Name, Last Name, Email ID, Gender, Date of Birth, Marital Status, Spouse Name, Father Name, Mother Name, Aadhaar Number, Religion, and Area. The subsequent steps — Address, Qualification, Language, Other Details, and Uploads — follow the same structure and fields as the 'Update Qualification and Experience' and 'Renewal of Registration' forms.",
+        "keywords": [
+            "transfer of employment exchange",
+            "transfer registration"
+        ]
+    }
+
+
+
+
+
+
 ]
 # ─── In-memory session storage ───────────────────────────────────────────────
 sessions: dict = {}
@@ -882,7 +1322,7 @@ def get_services():
     return sorted(services)
 
 def get_categories_for_service(service: str):
-    cats = list(set(item["category"] for item in KNOWLEDGE_BASE if item["service"] == service))
+    cats = list(set(item["category"] for item in KNOWLEDGE_BASE if item["service"] == service and item["category"] != "Overview"))
     return sorted(cats)
 
 def get_questions_for_category(service: str, category: str):
