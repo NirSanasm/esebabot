@@ -4,11 +4,28 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from typing import Optional
+from contextlib import asynccontextmanager
 import json
 import re
+import os
 from datetime import datetime
+from dotenv import load_dotenv
+from google import genai
+import knowledge_store
 
-app = FastAPI(title="e-Seba Manipur Chatbot API")
+load_dotenv()
+
+# ─── Lifespan (startup/shutdown) ──────────────────────────────────────────────
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Initialize ChromaDB knowledge store on startup."""
+    print("🚀 Starting up — initializing knowledge store...")
+    knowledge_store.initialize(KNOWLEDGE_BASE)
+    yield
+    print("👋 Shutting down.")
+
+app = FastAPI(title="e-Seba Manipur Chatbot API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -16,6 +33,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ─── Gemini LLM Client ───────────────────────────────────────────────────────
+
+def _get_gemini_client() -> genai.Client:
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        raise RuntimeError("GEMINI_API_KEY not set")
+    return genai.Client(api_key=api_key)
+
+GEMINI_MODEL = "gemini-2.5-flash"
 
 # ─── Knowledge Base ───────────────────────────────────────────────────────────
 
@@ -1074,7 +1101,7 @@ KNOWLEDGE_BASE =[
   ]
 },
 {
-  "id": "profile_005",
+  "id": "profile_005b",
   "service": "General",
   "category": "Data Accuracy",
   "question": "What happens if my Citizen Profile information is incorrect?",
@@ -1359,6 +1386,10 @@ class ChatRequest(BaseModel):
     action: str          # "select_service" | "select_category" | "select_question" | "back"
     value: Optional[str] = None
 
+class AIChatRequest(BaseModel):
+    session_id: str
+    message: str
+
 # ─── Routes ───────────────────────────────────────────────────────────────────
 
 @app.post("/api/session/start")
@@ -1499,6 +1530,99 @@ def chat(req: ChatRequest):
         }
 
     raise HTTPException(status_code=400, detail="Unknown action.")
+
+# ─── AI Chat Endpoint ─────────────────────────────────────────────────────────
+
+@app.post("/api/ai-chat")
+def ai_chat(req: AIChatRequest):
+    """Free-text AI chat using ChromaDB retrieval + Gemini LLM generation."""
+    if req.session_id not in sessions:
+        raise HTTPException(status_code=404, detail="Session not found. Please start a new session.")
+
+    session = sessions[req.session_id]
+    user_message = req.message.strip()
+    if not user_message:
+        raise HTTPException(status_code=400, detail="Message cannot be empty.")
+
+    # 1. Retrieve relevant knowledge from ChromaDB
+    try:
+        matches = knowledge_store.query(user_message, n_results=5)
+    except Exception as e:
+        print(f"ChromaDB query error: {e}")
+        matches = []
+
+    # 2. Build context from retrieved entries
+    context_parts = []
+    sources = []
+    for m in matches:
+        if m["score"] > 0.5:  # Only include reasonably relevant matches
+            context_parts.append(
+                f"Q: {m['question']}\nA: {m['answer']}\n(Service: {m['service']}, Category: {m['category']})"
+            )
+            sources.append({
+                "id": m["id"],
+                "question": m["question"],
+                "service": m["service"],
+                "category": m["category"],
+                "score": m["score"],
+            })
+
+    context_text = "\n\n---\n\n".join(context_parts) if context_parts else "No relevant information found in the knowledge base."
+
+    # 3. Generate answer with Gemini LLM
+    system_prompt = """You are the e-Seba Manipur Help Assistant, a friendly and knowledgeable chatbot for the Government of Manipur's e-Seba citizen services portal.
+
+Your role:
+- Answer user questions about e-Seba Manipur services accurately and helpfully.
+- Use ONLY the provided context from the knowledge base to answer. Do NOT make up information.
+- If the context doesn't contain enough information to answer, say so politely and suggest the user browse the available services or contact support.
+- Be concise but thorough. Use numbered steps when explaining processes.
+- Be warm and use emojis sparingly (🙏, ✅, 📋, etc.).
+- Always respond in the same language the user is using."""
+
+    user_prompt = f"""Context from knowledge base:
+{context_text}
+
+User question: {user_message}
+
+Please provide a helpful answer based on the context above."""
+
+    try:
+        client = _get_gemini_client()
+        response = client.models.generate_content(
+            model=GEMINI_MODEL,
+            contents=user_prompt,
+            config=genai.types.GenerateContentConfig(
+                system_instruction=system_prompt,
+                temperature=0.3,
+                max_output_tokens=1024,
+            ),
+        )
+        ai_answer = response.text
+    except Exception as e:
+        print(f"Gemini LLM error: {e}")
+        ai_answer = "I'm sorry, I'm having trouble generating a response right now. Please try again or use the Browse Topics option to find your answer. 🙏"
+
+    # 4. Build suggestion chips from top sources
+    suggestions = []
+    seen_services = set()
+    for s in sources[:3]:
+        if s["service"] not in seen_services:
+            suggestions.append({"service": s["service"], "category": s["category"]})
+            seen_services.add(s["service"])
+
+    # 5. Log to session history
+    session["history"].append({
+        "type": "ai_chat",
+        "user_message": user_message,
+        "timestamp": datetime.now().isoformat(),
+    })
+
+    return {
+        "answer": ai_answer,
+        "sources": sources,
+        "suggestions": suggestions,
+    }
 
 @app.get("/api/session/{session_id}")
 def get_session(session_id: str):
