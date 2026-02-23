@@ -1441,7 +1441,7 @@ def chat(req: ChatRequest):
             overview = get_service_overview(session["current_service"])
             msg = f"What topic would you like help with under **{session['current_service']}**?"
             if overview:
-                msg += f"\n\n📋 **Overview:** {overview}"
+                msg += f"\n{overview}"
             return {
                 "state": "category_selection",
                 "message": msg,
@@ -1484,7 +1484,7 @@ def chat(req: ChatRequest):
         overview = get_service_overview(value)
         msg = f"You selected **{value}**. What topic would you like help with?"
         if overview:
-            msg += f"\n\n📋 **Overview:** {overview}"
+            msg += f"\n{overview}"
         return {
             "state": "category_selection",
             "message": msg,
