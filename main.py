@@ -44,6 +44,14 @@ def _get_gemini_client() -> genai.Client:
 
 GEMINI_MODEL = "gemini-2.5-flash"
 
+
+
+def normalize_query(q: str) -> str:
+    q = q.lower()
+    q = re.sub(r"e[\s\-]?seba", "e-seba", q)  # normalize eseba, e seba, e-seba → e-seba
+    return q
+
+
 # ─── Knowledge Base ───────────────────────────────────────────────────────────
 
 KNOWLEDGE_BASE =[
@@ -1540,7 +1548,8 @@ def ai_chat(req: AIChatRequest):
         raise HTTPException(status_code=404, detail="Session not found. Please start a new session.")
 
     session = sessions[req.session_id]
-    user_message = req.message.strip()
+    user_message = req.message.strip() 
+    user_message = normalize_query(user_message)
     if not user_message:
         raise HTTPException(status_code=400, detail="Message cannot be empty.")
 
@@ -1567,25 +1576,48 @@ def ai_chat(req: AIChatRequest):
                 "score": m["score"],
             })
 
-    context_text = "\n\n---\n\n".join(context_parts) if context_parts else "No relevant information found in the knowledge base."
+    context_text = "\n\n---\n\n".join(context_parts) if context_parts else ""
 
     # 3. Generate answer with Gemini LLM
-    system_prompt = """You are the e-Seba Manipur Help Assistant, a friendly and knowledgeable chatbot for the Government of Manipur's e-Seba citizen services portal.
+    system_prompt = """You are the official e-Seba Manipur Help Assistant — a helpful and knowledgeable guide for citizens using the Government of Manipur's e-Seba portal (eseba.manipur.gov.in).
 
-Your role:
-- Answer user questions about e-Seba Manipur services accurately and helpfully.
-- Use ONLY the provided context from the knowledge base to answer. Do NOT make up information.
-- If the context doesn't contain enough information to answer, say so politely and suggest the user browse the available services or contact support.
+TONE:
+- Professional, clear, and helpful.
+- Be confident and direct. State information clearly.
 - Be concise but thorough. Use numbered steps when explaining processes.
-- Be warm and use emojis sparingly (🙏, ✅, 📋, etc.).
-- Always respond in the same language the user is using."""
+- Use emojis sparingly where appropriate (🙏, ✅, 📋, 📝).
+- Always respond in the same language the user is using.
 
-    user_prompt = f"""Context from knowledge base:
+CRITICAL RULES — NEVER BREAK THESE:
+- NEVER say "based on the context", "based on the provided information", "from the knowledge base", "according to the context", "the information provided does not contain", or any similar phrase.
+- NEVER expose your internal workings. The user must not know you are retrieving answers from a database. Simply answer as if you know.
+- NEVER say "I don't have that information" and stop there. Always follow up with something useful — suggest related topics, direct them to browse services, or give general guidance.
+- The user may refer to the website as e-Seba, eseba, e-seba, eSeba, eseba.manipur.gov.in — treat them all the same.
+
+WHEN YOU HAVE GOOD INFORMATION:
+- Answer directly: "To register on e-Seba, follow these steps..."
+- Use numbered steps for processes.
+- End with: "Let me know if you need help with anything else. 🙏"
+
+WHEN INFORMATION IS LIMITED OR MISSING:
+- Do not say "I don't have info" and leave it there.
+- Give whatever general guidance you can about e-Seba Manipur services, then suggest they browse specific service categories or contact support.
+- Always leave the user with a next step."""
+
+    if context_text:
+        user_prompt = f"""Here is some helpful reference information:
+
 {context_text}
 
-User question: {user_message}
+---
 
-Please provide a helpful answer based on the context above."""
+The citizen is asking: {user_message}
+
+Answer their question directly and helpfully. Remember — speak confidently as if you naturally know this, never mention where the information comes from."""
+    else:
+        user_prompt = f"""The citizen is asking: {user_message}
+
+You may not have specific details for this exact question, but do your best to help. Give general guidance about e-Seba Manipur services and suggest what they can explore. Never say you have no information — always be helpful and guide them forward."""
 
     try:
         client = _get_gemini_client()
@@ -1594,14 +1626,14 @@ Please provide a helpful answer based on the context above."""
             contents=user_prompt,
             config=genai.types.GenerateContentConfig(
                 system_instruction=system_prompt,
-                temperature=0.3,
+                temperature=0.4,
                 max_output_tokens=1024,
             ),
         )
         ai_answer = response.text
     except Exception as e:
         print(f"Gemini LLM error: {e}")
-        ai_answer = "I'm sorry, I'm having trouble generating a response right now. Please try again or use the Browse Topics option to find your answer. 🙏"
+        ai_answer = "Sorry, something went wrong while processing your request. Please try again, or use the Browse Topics tab to find what you need. 🙏"
 
     # 4. Build suggestion chips from top sources
     suggestions = []
